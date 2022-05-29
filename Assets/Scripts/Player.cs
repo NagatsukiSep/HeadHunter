@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 
 public class Player : MonoBehaviourPunCallbacks
 {
@@ -12,6 +13,7 @@ public class Player : MonoBehaviourPunCallbacks
 
     [SerializeField] private GameObject foot;
     [SerializeField] private GameObject head;
+    [SerializeField] private TextMeshProUGUI nameText;
     private float time = 0;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -20,6 +22,7 @@ public class Player : MonoBehaviourPunCallbacks
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        PhotonNetwork.NickName = "Player" + Random.Range(0, 100);
         if (!photonView.IsMine || isBot)
         {
             rb.bodyType = RigidbodyType2D.Static;
@@ -33,6 +36,7 @@ public class Player : MonoBehaviourPunCallbacks
         {
             Jump();
             Move();
+            CheckNameChanged();
         }
         if (!isAlive && time > 2f)
         {
@@ -75,5 +79,21 @@ public class Player : MonoBehaviourPunCallbacks
         head.SetActive(true);
         foot.SetActive(true);
         spriteRenderer.color = new Color(1, 1, 1, 1);
+    }
+
+    private void CheckNameChanged()
+    {
+        if (photonView.IsMine)
+        {
+            if (nameText.text != PhotonNetwork.NickName)
+            {
+                photonView.RPC("SetName", RpcTarget.AllBuffered);
+            }
+        }
+    }
+    [PunRPC]
+    public void SetName()
+    {
+        nameText.text = photonView.Owner.NickName;
     }
 }
