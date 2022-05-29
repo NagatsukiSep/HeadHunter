@@ -35,7 +35,6 @@ public class Player : MonoBehaviourPunCallbacks
             Reborn();
         }
         time += Time.deltaTime;
-
     }
 
     private void Move()

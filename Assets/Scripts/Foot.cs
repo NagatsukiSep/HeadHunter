@@ -18,7 +18,7 @@ public class Foot : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Floor")
+        if (other.gameObject.tag == "Floor" || other.gameObject.tag == "Body")
         {
             player.isGrounded = true;
         }
@@ -30,7 +30,7 @@ public class Foot : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Floor")
+        if (other.gameObject.tag == "Floor" || other.gameObject.tag == "Body")
         {
             player.isGrounded = false;
         }
