@@ -68,7 +68,6 @@ public class Player : MonoBehaviourPunCallbacks
         time = 0;
         isAlive = false;
         head.SetActive(false);
-        foot.SetActive(false);
         spriteRenderer.color = new Color(1, 1, 1, 0.2f);
 
     }
@@ -77,7 +76,6 @@ public class Player : MonoBehaviourPunCallbacks
     {
         isAlive = true;
         head.SetActive(true);
-        foot.SetActive(true);
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
