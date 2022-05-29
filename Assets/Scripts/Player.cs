@@ -45,7 +45,7 @@ public class Player : MonoBehaviourPunCallbacks
     private void Move()
     {
         float moveSpeed = isGrounded ? 10f : 5f;
-        moveSpeed *= isAlive ? 1.5f : 1f;
+        moveSpeed *= isAlive ? 1.5f : 2f;
         float x = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
 
