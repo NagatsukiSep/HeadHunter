@@ -23,6 +23,7 @@ public class Player : MonoBehaviourPunCallbacks
         if (!photonView.IsMine || isBot)
         {
             rb.bodyType = RigidbodyType2D.Kinematic;
+            rb.mass = 0;
         }
     }
 
