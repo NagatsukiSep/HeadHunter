@@ -20,6 +20,10 @@ public class Player : MonoBehaviourPunCallbacks
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (!photonView.IsMine || isBot)
+        {
+            rb.bodyType = RigidbodyType2D.Kinematic;
+        }
     }
 
     // Update is called once per frame
@@ -39,14 +43,16 @@ public class Player : MonoBehaviourPunCallbacks
 
     private void Move()
     {
-
+        float moveSpeed = isGrounded ? 10f : 5f;
+        moveSpeed *= isAlive ? 1.5f : 1f;
         float x = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(x * 5, rb.velocity.y);
+        rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
 
 
     }
     private void Jump()
     {
+        float jumpPower = isAlive ? 15f : 20f;
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = Vector2.up * 15;
