@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviourPunCallbacks
 {
     [SerializeField] private bool isBot = false;
     private Rigidbody2D rb;
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isBot)
+        if (!isBot && photonView.IsMine)
         {
             Jump();
             Move();
