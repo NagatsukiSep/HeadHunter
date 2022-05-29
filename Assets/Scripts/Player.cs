@@ -50,7 +50,7 @@ public class Player : MonoBehaviourPunCallbacks
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rb.velocity = Vector2.up * 10;
+            rb.velocity = Vector2.up * 15;
         }
     }
 
