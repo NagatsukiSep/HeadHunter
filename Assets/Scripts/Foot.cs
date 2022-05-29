@@ -28,6 +28,14 @@ public class Foot : MonoBehaviour
             other.gameObject.GetComponentInParent<Player>().Death();
         }
     }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Floor" || other.gameObject.tag == "Body")
+        {
+            player.isGrounded = true;
+        }
+    }
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Floor" || other.gameObject.tag == "Body")
