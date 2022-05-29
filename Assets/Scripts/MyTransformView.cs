@@ -1,7 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
 
-public class AvatarTransformView : MonoBehaviourPunCallbacks, IPunObservable
+public class MyTransformView : MonoBehaviourPunCallbacks, IPunObservable
 {
     private const float InterpolationPeriod = 0.1f; // 補間にかける時間
 
