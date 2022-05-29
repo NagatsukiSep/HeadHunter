@@ -10,6 +10,7 @@ public class Player : MonoBehaviourPunCallbacks
     private Rigidbody2D rb;
     [SerializeField] public bool isGrounded = false;
     [SerializeField] public bool isAlive = true;
+    [SerializeField] public int killCount = 0;
 
     [SerializeField] private GameObject foot;
     [SerializeField] private GameObject head;
@@ -59,7 +60,7 @@ public class Player : MonoBehaviourPunCallbacks
         float jumpPower = isAlive ? 15f : 20f;
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rb.velocity = Vector2.up * 15;
+            rb.velocity = Vector2.up * jumpPower;
         }
     }
 
@@ -92,6 +93,6 @@ public class Player : MonoBehaviourPunCallbacks
     [PunRPC]
     public void SetName()
     {
-        nameText.text = photonView.Owner.NickName;
+        nameText.text = photonView.Owner.NickName + " (" + killCount.ToString() + ")";
     }
 }

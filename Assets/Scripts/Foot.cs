@@ -24,8 +24,8 @@ public class Foot : MonoBehaviour
         }
         if (other.gameObject.tag == "Head")
         {
-            Debug.Log(other.gameObject.name);
             other.gameObject.GetComponentInParent<Player>().Death();
+            player.killCount++;
         }
     }
 

@@ -454,6 +454,7 @@ MonoBehaviour:
   isBot: 0
   isGrounded: 0
   isAlive: 1
+  killCount: 0
   foot: {fileID: 8551081102026013054}
   head: {fileID: 8551081101126137831}
   nameText: {fileID: 8705064459527279319}
