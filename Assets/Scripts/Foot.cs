@@ -25,7 +25,7 @@ public class Foot : MonoBehaviour
         if (other.gameObject.tag == "Head")
         {
             Debug.Log(other.gameObject.name);
-            other.gameObject.GetComponentInParent<Player>().isAlive = false;
+            other.gameObject.GetComponentInParent<Player>().Death();
         }
     }
     void OnTriggerExit2D(Collider2D other)

@@ -216,6 +216,7 @@ MonoBehaviour:
   isBot: 0
   isGrounded: 0
   isAlive: 1
+  foot: {fileID: 8551081102026013054}
   head: {fileID: 8551081101126137831}
 --- !u!61 &8551081101317098672
 BoxCollider2D:
@@ -256,7 +257,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -283,7 +284,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 1
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &8551081102026013054
