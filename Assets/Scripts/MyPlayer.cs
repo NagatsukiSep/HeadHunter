@@ -102,6 +102,6 @@ public class MyPlayer : MonoBehaviourPunCallbacks
     [PunRPC]
     public void SetName()
     {
-        nameText.text = photonView.Owner.NickName + " (" + PhotonNetwork.LocalPlayer.GetScore().ToString() + ")";
+        nameText.text = photonView.Owner.NickName + " (" + photonView.Owner.GetScore().ToString() + ")";
     }
 }
