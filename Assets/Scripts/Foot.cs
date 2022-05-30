@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Foot : MonoBehaviour
+public class Foot : MonoBehaviourPunCallbacks
 {
-    private Player player;
+    private MyPlayer player;
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponentInParent<Player>();
+        player = GetComponentInParent<MyPlayer>();
     }
 
     // Update is called once per frame
@@ -24,8 +25,11 @@ public class Foot : MonoBehaviour
         }
         if (other.gameObject.tag == "Head")
         {
-            other.gameObject.GetComponentInParent<Player>().Death();
-            player.killCount++;
+            other.gameObject.GetComponentInParent<MyPlayer>().Death();
+            if (player.photonView.IsMine)
+            {
+                PhotonNetwork.LocalPlayer.AddScore(1);
+            }
         }
     }
 
