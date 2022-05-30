@@ -18,6 +18,8 @@ public class MyPlayer : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject foot;
     [SerializeField] private GameObject head;
     [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private Sprite deadSprite;
+    [SerializeField] private Sprite aliveSprite;
     private float time = 0;
     private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
@@ -25,6 +27,7 @@ public class MyPlayer : MonoBehaviourPunCallbacks
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.size = new Vector2(0.001f, 0.001f);
         if (photonView.IsMine)
         {
             PhotonNetwork.NickName = "Player" + Random.Range(0, 100);
@@ -78,7 +81,8 @@ public class MyPlayer : MonoBehaviourPunCallbacks
         time = 0;
         isAlive = false;
         head.SetActive(false);
-        spriteRenderer.color = new Color(1, 1, 1, 0.2f);
+        spriteRenderer.sprite = deadSprite;
+        spriteRenderer.color = new Color(0.7f, 0.7f, 0.7f, 1);
 
     }
 
@@ -86,6 +90,7 @@ public class MyPlayer : MonoBehaviourPunCallbacks
     {
         isAlive = true;
         head.SetActive(true);
+        spriteRenderer.sprite = aliveSprite;
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
