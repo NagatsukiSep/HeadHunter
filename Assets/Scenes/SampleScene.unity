@@ -1406,6 +1406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 1146047847}
+  genText: {fileID: 29009991}
 --- !u!1 &1362370080
 GameObject:
   m_ObjectHideFlags: 0
