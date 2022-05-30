@@ -35,10 +35,14 @@ public class GenText : MonoBehaviourPunCallbacks
     [PunRPC]
     private void GenTxt(int i)
     {
+        if (i >= sprites.Count)
+        {
+            return;
+        }
         Debug.Log("Gen");
         var _text = Instantiate(textPrefab);
         _text.GetComponent<SpriteRenderer>().sprite = sprites[i];
         _text.AddComponent<BoxCollider2D>();
-        _text.transform.position = new Vector3(10, Random.Range(-3, 3), 0);
+        _text.transform.position = new Vector3(10, 2 * ((i % 3) - 1), 0);
     }
 }
